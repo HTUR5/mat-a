@@ -2,7 +2,7 @@
 #include "mat.hpp"
 using namespace ariel;
 
-#include<string>
+#include <string>
 #include <algorithm>
 using namespace std;
 
