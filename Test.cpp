@@ -23,7 +23,7 @@ TEST_CASE("Good input") {
 													 "@-------@\n"
 													 "@@@@@@@@@"));
 
-    CHECK(nospaces(mat(9, 7, '@', '-')) == nospaces("----------\n"
+    CHECK(nospaces(mat(9, 7, '-', '@')) == nospaces("----------\n"
 													 "-@@@@@@@-\n"
 													 "-@-----@-\n"
 													 "-@-@@@-@-\n"
@@ -48,6 +48,13 @@ TEST_CASE("Good input") {
     CHECK(nospaces(mat(3, 3, '@', '@')) == nospaces("@@@\n"
                                                     "@@@\n"
                                                     "@@@"));
+
+    CHECK(nospaces(mat(3, 3, '@', '@')).length() == 9);
+    CHECK(nospaces(mat(3, 5, '*', '#')) == nospaces("***\n"
+                                                    "*#*\n"
+                                                    "*#*\n"
+                                                    "*#*\n"
+                                                    "***"));
 }
 
 
@@ -59,10 +66,11 @@ TEST_CASE("even numbers") {
     CHECK_THROWS(mat(1, 2, '$', '%'));                                                        
 }
 
-TEST_CASE("not char") {
+TEST_CASE("not good char") {
     CHECK_THROWS(mat(10, 10, 1, 4));
     CHECK_THROWS(mat(2, 1, '$', 2));
-    CHECK_THROWS(mat(1, 2, 4, '%'));                                                        
+    CHECK_THROWS(mat(1, 2, 4, '%'));
+    CHECK_THROWS(mat(1, 2, ' ', ' '));                                                          
 }
 
 TEST_CASE("not numbers") {
